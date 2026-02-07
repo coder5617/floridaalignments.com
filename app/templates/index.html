@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Professional Auto Repair - {{ business_name }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-6 fade-in">
+                <h1 class="display-3 fw-bold mb-4 text-shadow">Tampa's Trusted Auto Repair Experts</h1>
+                <p class="lead mb-4 fs-5">Professional brake service, wheel alignments, suspension work, and DOT inspections. Family-owned and operated since 2010.</p>
+                <div class="hero-features mb-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <i class="fas fa-shield-alt text-warning me-2"></i>
+                            <span>Licensed & Insured</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <i class="fas fa-tools text-warning me-2"></i>
+                            <span>Expert Technicians</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <i class="fas fa-clock text-warning me-2"></i>
+                            <span>Same-Day Service</span>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <i class="fas fa-certificate text-warning me-2"></i>
+                            <span>Warranty Guaranteed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-cta d-grid d-md-block">
+                    {% if calendly_url %}
+                    <a href="{{ calendly_url }}" target="_blank" class="btn btn-warning btn-lg me-3 mb-2 shadow">
+                        <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                    </a>
+                    {% endif %}
+                    <a href="{{ url_for('main.contact') }}" class="btn btn-outline-light btn-lg me-3 mb-2">
+                        <i class="fas fa-comment me-2"></i>Get Free Quote
+                    </a>
+                    <a href="tel:{{ business_phone }}" class="btn btn-light btn-lg mb-2">
+                        <i class="fas fa-phone me-2"></i>{{ business_phone }}
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 fade-in text-center">
+                <div class="hero-image-container">
+                    <div class="hero-icons">
+                        <div class="floating-icon icon-1">
+                            <i class="fas fa-wrench fa-2x text-warning"></i>
+                        </div>
+                        <div class="floating-icon icon-2">
+                            <i class="fas fa-car fa-3x text-light"></i>
+                        </div>
+                        <div class="floating-icon icon-3">
+                            <i class="fas fa-cogs fa-2x text-warning"></i>
+                        </div>
+                        <div class="floating-icon icon-4">
+                            <i class="fas fa-tire fa-2x text-light"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust indicators -->
+        <div class="row mt-5 text-center fade-in">
+            <div class="col-md-3 mb-3">
+                <div class="stat-item">
+                    <h3 class="display-6 fw-bold text-warning">15+</h3>
+                    <p class="mb-0">Years Experience</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stat-item">
+                    <h3 class="display-6 fw-bold text-warning">5000+</h3>
+                    <p class="mb-0">Cars Serviced</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stat-item">
+                    <h3 class="display-6 fw-bold text-warning">4.9★</h3>
+                    <p class="mb-0">Customer Rating</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stat-item">
+                    <h3 class="display-6 fw-bold text-warning">100%</h3>
+                    <p class="mb-0">Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5 fade-in">
+                <h2 class="display-5 fw-bold text-primary">Expert Automotive Services</h2>
+                <p class="lead text-muted">Professional repair and maintenance services for all makes and models</p>
+                <div class="section-divider mx-auto"></div>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6 fade-in" data-delay="{{ loop.index * 100 }}">
+                <div class="card service-card h-100 shadow-sm border-0">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon-wrapper mb-4">
+                            <div class="service-icon-bg">
+                                <i class="{{ service.icon_class }} fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title h4 mb-3">{{ service.name }}</h5>
+                        <p class="card-text text-muted mb-4">{{ service.short_description }}</p>
+                        <div class="service-features mb-4">
+                            <small class="text-success">
+                                <i class="fas fa-check-circle me-1"></i>
+                                {% if 'General' in service.name %}
+                                Oil Changes • Fluid Service • Filters
+                                {% elif 'Brake' in service.name %}
+                                Brake Pads • Rotors • Fluid Service
+                                {% elif 'DOT' in service.name %}
+                                Commercial • Fleet • Compliance
+                                {% elif 'Alignment' in service.name %}
+                                Wheel Alignment • Shocks • Struts
+                                {% elif 'Engine' in service.name %}
+                                Diagnostics • Tune-ups • Performance
+                                {% elif 'Fleet' in service.name %}
+                                Fleet Service • Tire Repair • Maintenance
+                                {% else %}
+                                Professional Service • Quality Parts
+                                {% endif %}
+                            </small>
+                        </div>
+                        <div class="service-actions">
+                            <a href="{{ url_for('main.contact') }}" class="btn btn-primary btn-sm me-2">
+                                <i class="fas fa-comment-alt me-1"></i>Get Quote
+                            </a>
+                            <a href="{{ url_for('main.services') }}" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-info-circle me-1"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>Same-day service available
+                        </small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Service guarantee -->
+        <div class="row mt-5">
+            <div class="col-lg-10 mx-auto">
+                <div class="service-guarantee bg-primary text-white rounded-4 p-4 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h4 class="mb-2">
+                                <i class="fas fa-shield-alt text-warning me-2"></i>
+                                100% Satisfaction Guarantee
+                            </h4>
+                            <p class="mb-0">We stand behind our work with comprehensive warranties on parts and labor.</p>
+                        </div>
+                        <div class="col-md-4 mt-3 mt-md-0">
+                            <a href="{{ url_for('main.services') }}" class="btn btn-warning btn-lg">
+                                View All Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+{% if testimonials %}
+<section class="testimonials-section bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="display-5 fw-bold">What Our Customers Say</h2>
+                <p class="lead">Real reviews from satisfied customers</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for testimonial in testimonials %}
+            <div class="col-lg-4 mb-4">
+                <div class="card testimonial-card h-100">
+                    <div class="card-body">
+                        <div class="rating mb-3">
+                            {{ testimonial.star_rating }}
+                        </div>
+                        <blockquote class="blockquote">
+                            <p>"{{ testimonial.review_text }}"</p>
+                            <footer class="blockquote-footer">
+                                <cite title="Source Title">{{ testimonial.customer_name }}</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Call to Action -->
+<section class="cta-section bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="display-5 fw-bold mb-4">Ready to Get Started?</h2>
+                <p class="lead mb-4">Contact us today for a free estimate on your automotive repair needs.</p>
+                <div class="d-grid d-md-block">
+                    <a href="{{ url_for('main.contact') }}" class="btn btn-warning btn-lg me-3 mb-2">Get Free Quote</a>
+                    <a href="tel:{{ business_phone }}" class="btn btn-outline-light btn-lg mb-2">{{ business_phone }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

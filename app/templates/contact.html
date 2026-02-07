@@ -1,0 +1,492 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Get Free Auto Repair Quote - {{ business_name }}{% endblock %}
+
+{% block description %}Get a free quote for auto repair services in Orlando. Contact Florida Alignment & Suspension for brake service, alignments, DOT inspections, and more. Call {{ business_phone }}.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="contact-hero bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-3">Get Your Free Quote Today</h1>
+                <p class="lead mb-4">Professional automotive repair services in Orlando. We respond to all inquiries within 24 hours.</p>
+                <div class="contact-stats row text-center mt-4">
+                    <div class="col-md-4 mb-3">
+                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                        <div>24-Hour Response</div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <i class="fas fa-shield-alt fa-2x text-warning mb-2"></i>
+                        <div>Licensed & Insured</div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <i class="fas fa-tools fa-2x text-warning mb-2"></i>
+                        <div>Expert Service</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-form-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8 mb-5">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
+                        <h3 class="mb-0">
+                            <i class="fas fa-comment-alt me-2"></i>
+                            Request Your Free Quote
+                        </h3>
+                        <p class="mb-0 mt-2 opacity-75">Fill out the form below and we'll get back to you quickly</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="contact-form" method="POST" class="needs-validation" novalidate>
+                            {{ contact_form.hidden_tag() }}
+                            
+                            <!-- Personal Information -->
+                            <div class="form-section mb-4">
+                                <h5 class="form-section-title">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    Your Information
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        {{ contact_form.name.label(class="form-label required") }}
+                                        {{ contact_form.name(class="form-control form-control-lg", placeholder="Your full name") }}
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        {{ contact_form.email.label(class="form-label required") }}
+                                        {{ contact_form.email(class="form-control form-control-lg", placeholder="your.email@example.com") }}
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        {{ contact_form.phone.label(class="form-label") }}
+                                        {{ contact_form.phone(class="form-control form-control-lg", placeholder="(555) 123-4567") }}
+                                        <div class="invalid-feedback"></div>
+                                        <small class="form-text text-muted">Optional - helps us respond faster</small>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        {{ contact_form.urgency.label(class="form-label") }}
+                                        {{ contact_form.urgency(class="form-select form-select-lg") }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Service Information -->
+                            <div class="form-section mb-4">
+                                <h5 class="form-section-title">
+                                    <i class="fas fa-wrench text-primary me-2"></i>
+                                    Service Details
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        {{ contact_form.service_id.label(class="form-label") }}
+                                        {{ contact_form.service_id(class="form-select form-select-lg") }}
+                                        <small class="form-text text-muted">Select the service you're interested in</small>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        {{ contact_form.subject.label(class="form-label") }}
+                                        {{ contact_form.subject(class="form-control form-control-lg", placeholder="Brief description of your needs") }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Vehicle Information -->
+                            <div class="form-section mb-4">
+                                <h5 class="form-section-title">
+                                    <i class="fas fa-car text-primary me-2"></i>
+                                    Vehicle Information
+                                    <small class="text-muted">(Optional)</small>
+                                </h5>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        {{ contact_form.vehicle_year.label(class="form-label") }}
+                                        {{ contact_form.vehicle_year(class="form-control form-control-lg", placeholder="2020") }}
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        {{ contact_form.vehicle_make.label(class="form-label") }}
+                                        {{ contact_form.vehicle_make(class="form-control form-control-lg", placeholder="Honda") }}
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        {{ contact_form.vehicle_model.label(class="form-label") }}
+                                        {{ contact_form.vehicle_model(class="form-control form-control-lg", placeholder="Accord") }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Message -->
+                            <div class="form-section mb-4">
+                                <h5 class="form-section-title">
+                                    <i class="fas fa-comment text-primary me-2"></i>
+                                    Tell Us More
+                                </h5>
+                                {{ contact_form.message.label(class="form-label required") }}
+                                {{ contact_form.message(class="form-control form-control-lg", rows="5", placeholder="Please describe the issue you're experiencing or the service you need. The more details you provide, the better we can help you.") }}
+                                <div class="invalid-feedback"></div>
+                                <small class="form-text text-muted">Include any symptoms, noises, or specific concerns</small>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Send My Request
+                                </button>
+                                <p class="mt-3 mb-0">
+                                    <small class="text-muted">
+                                        <i class="fas fa-shield-alt me-1"></i>
+                                        Your information is secure and will never be shared
+                                    </small>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <!-- Contact Info Card -->
+                <div class="card shadow border-0 rounded-4 mb-4">
+                    <div class="card-header bg-warning text-dark text-center py-3">
+                        <h5 class="mb-0">
+                            <i class="fas fa-phone me-2"></i>
+                            Contact Information
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="contact-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <strong>Phone</strong><br>
+                                    <a href="tel:{{ business_phone }}" class="text-decoration-none">{{ business_phone }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <strong>Email</strong><br>
+                                    <a href="mailto:{{ business_email }}" class="text-decoration-none">{{ business_email }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <strong>Address</strong><br>
+                                    {{ business_address }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hours Card -->
+                <div class="card shadow border-0 rounded-4 mb-4">
+                    <div class="card-header bg-success text-white text-center py-3">
+                        <h5 class="mb-0">
+                            <i class="fas fa-clock me-2"></i>
+                            Business Hours
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="hours-item d-flex justify-content-between mb-2">
+                            <span><strong>Monday - Friday</strong></span>
+                            <span>8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-item d-flex justify-content-between mb-2">
+                            <span><strong>Saturday</strong></span>
+                            <span>8:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="hours-item d-flex justify-content-between">
+                            <span><strong>Sunday</strong></span>
+                            <span class="text-muted">Closed</span>
+                        </div>
+                        <hr>
+                        <p class="mb-0 text-center">
+                            <small class="text-success">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Emergency repairs available
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Google Maps Card -->
+                <div class="card shadow border-0 rounded-4 mb-4">
+                    <div class="card-header bg-secondary text-white text-center py-3">
+                        <h5 class="mb-0">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Find Us Here
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="map-container" class="position-relative">
+                            <div id="google-map" style="height: 300px; border-radius: 0 0 16px 16px;"></div>
+                            <div class="map-overlay position-absolute bottom-0 start-0 end-0 p-3 text-white" style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-map-marker-alt text-warning me-2"></i>
+                                    <div>
+                                        <strong>{{ business_name }}</strong><br>
+                                        <small>{{ business_address }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center bg-light">
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="https://maps.google.com?q={{ business_address }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-external-link-alt me-1"></i>Open in Google Maps
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="https://maps.google.com/directions/?api=1&destination={{ business_address }}" target="_blank" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-route me-1"></i>Get Directions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Preview -->
+                {% if faqs %}
+                <div class="card shadow border-0 rounded-4">
+                    <div class="card-header bg-info text-white text-center py-3">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle me-2"></i>
+                            Common Questions
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        {% for faq in faqs[:3] %}
+                        <div class="faq-item mb-3">
+                            <h6 class="text-primary mb-1">{{ faq.question }}</h6>
+                            <p class="small text-muted mb-2">{{ faq.answer[:100] }}...</p>
+                        </div>
+                        {% if not loop.last %}<hr>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Enhanced contact form functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateContactForm()) {
+                return;
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Track successful form submission
+                    if (window.FloridaAlignment && window.FloridaAlignment.trackContactFormSubmission) {
+                        window.FloridaAlignment.trackContactFormSubmission(formData);
+                    }
+                    
+                    showNotification('Thank you! Your message has been sent. We\'ll get back to you within 24 hours.', 'success');
+                    contactForm.reset();
+                } else {
+                    showNotification(result.message || 'There was an error sending your message. Please try again.', 'danger');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showNotification('There was an error sending your message. Please try again or call us directly.', 'danger');
+            } finally {
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
+
+function validateContactForm() {
+    const form = document.getElementById('contact-form');
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!validateField(field)) {
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    notification.style.cssText = 'top: 20px; right: 20px; z-index: 1050; min-width: 350px; max-width: 500px;';
+    notification.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'danger' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+            <div class="flex-grow-1">${message}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 7 seconds for success messages
+    if (type === 'success') {
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 7000);
+    }
+}
+
+// Initialize Google Maps
+function initMap() {
+    // Business location coordinates (Orlando, FL area)
+    const businessLocation = { lat: 28.5383, lng: -81.3792 };
+    
+    const map = new google.maps.Map(document.getElementById('google-map'), {
+        zoom: 15,
+        center: businessLocation,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [
+            {
+                featureType: 'poi.business',
+                elementType: 'labels',
+                stylers: [{ visibility: 'on' }]
+            }
+        ]
+    });
+    
+    // Custom marker
+    const marker = new google.maps.Marker({
+        position: businessLocation,
+        map: map,
+        title: '{{ business_name }}',
+        icon: {
+            url: 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23dc3545" width="40" height="40"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5" fill="white"/></svg>',
+            scaledSize: new google.maps.Size(40, 40),
+            anchor: new google.maps.Point(20, 40)
+        }
+    });
+    
+    // Info window
+    const infoWindow = new google.maps.InfoWindow({
+        content: `
+            <div class="p-2">
+                <h6 class="mb-1">{{ business_name }}</h6>
+                <p class="mb-1 small">{{ business_address }}</p>
+                <p class="mb-1 small">
+                    <i class="fas fa-phone text-primary me-1"></i>
+                    <a href="tel:{{ business_phone }}">{{ business_phone }}</a>
+                </p>
+                <div class="mt-2">
+                    <a href="https://maps.google.com/directions/?api=1&destination={{ business_address }}" 
+                       target="_blank" class="btn btn-primary btn-sm">
+                        <i class="fas fa-route me-1"></i>Get Directions
+                    </a>
+                </div>
+            </div>
+        `
+    });
+    
+    // Show info window on marker click
+    marker.addListener('click', () => {
+        infoWindow.open(map, marker);
+    });
+    
+    // Service area circle (optional)
+    const serviceArea = new google.maps.Circle({
+        strokeColor: '#0066cc',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#0066cc',
+        fillOpacity: 0.15,
+        map: map,
+        center: businessLocation,
+        radius: 8000 // 8km service radius
+    });
+}
+
+// Load Google Maps API
+function loadGoogleMaps() {
+    const apiKey = '{{ google_maps_api_key }}';
+    if (apiKey && apiKey !== 'None') {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    } else {
+        // Fallback if no API key
+        document.getElementById('google-map').innerHTML = `
+            <div class="d-flex align-items-center justify-content-center h-100 bg-light text-center p-4">
+                <div>
+                    <i class="fas fa-map-marker-alt fa-3x text-muted mb-3"></i>
+                    <h6>Interactive Map Coming Soon</h6>
+                    <p class="small text-muted mb-3">Google Maps integration requires API key configuration</p>
+                    <a href="https://maps.google.com?q={{ business_address }}" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="fas fa-external-link-alt me-1"></i>View on Google Maps
+                    </a>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Initialize map when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('google-map')) {
+        loadGoogleMaps();
+    }
+});
+</script>
+{% endblock %}
