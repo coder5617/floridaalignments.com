@@ -1,6 +1,6 @@
 # Florida Alignment & Suspension
 
-A modern, responsive static website for Florida Alignment & Suspension, a professional automotive alignment and suspension service in Pinellas County, Florida.
+A modern, responsive static website for Florida Alignment & Suspension, a professional automotive alignment and suspension service in Hillsoborough County, Florida.
 
 ## Overview
 
