@@ -1,115 +1,69 @@
-# Florida Alignment & Suspension - Website
+Florida Alignments Static Site
+==============================
 
-A lightweight Flask website for Florida Alignment & Suspension, a car/truck mechanic shop. The site focuses on lead generation through contact forms with email notifications.
+Overview
+--------
+This repository contains a fully static site for Florida Alignment & Suspension.
+It is designed for low-cost hosting (Cloudflare Pages) and uses a mailto: flow
+to open the visitor's local email client when the contact form is submitted.
 
-## 🚀 Quick Start
+Project Structure
+-----------------
+static_build/
+  404.html
+  500.html
+  about/
+    index.html
+  contact/
+    index.html
+  services/
+    index.html
+  index.html
+  robots.txt
+  sitemap.xml
+  config.js
+  static/
+    css/
+      style.css
+    js/
+      main.js
+      config-init.js
+    icons/
+    img/
 
-```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or: venv\Scripts\activate  # Windows
+Key Files
+---------
+- static_build/config.js
+  Single source of truth for business name, phone, email, address, domain, and
+  optional Google Maps API key.
+- static_build/static/js/config-init.js
+  Applies config values to the static pages at runtime.
+- static_build/contact/index.html
+  Contact form uses a mailto: flow to open the user's local email client and
+  includes all fields.
 
-# Install dependencies
-pip install -r requirements.txt
+Updating Business Details
+-------------------------
+Edit static_build/config.js and update:
+- businessName
+- businessNameShort
+- businessPhoneDisplay
+- businessPhoneLink
+- businessEmail
+- businessAddress
+- domain
+- mapsQuery / mapsQueryEncoded
+- googleMapsApiKey (optional)
 
-# Configure environment variables
-cp .env.example .env  # Then edit .env with your values
+Local Preview
+-------------
+Run a local server from the static_build directory:
 
-# Run the application
-python app.py
-```
+  python -m http.server 8000 --directory static_build
 
-Visit: **http://127.0.0.1:5000**
+Then open:
+  http://localhost:8000
 
-## 📁 Project Structure
-
-```
-FloridaAlignmentSuspension/
-├── app/
-│   ├── __init__.py         # Flask app factory
-│   ├── data.py             # Static content (services, FAQs, testimonials)
-│   ├── forms/              # Contact form
-│   ├── views/              # Routes (main pages + API)
-│   ├── templates/          # HTML templates
-│   └── static/             # CSS, JS, images
-├── app.py                  # Application entry point
-├── config.py               # Configuration
-├── requirements.txt        # Python dependencies
-└── archive/                # Old documentation (pre-static conversion)
-```
-
-## ⚙️ Configuration
-
-Create a `.env` file with:
-
-```bash
-# Required
-SECRET_KEY=your-secret-key-here
-BUSINESS_NAME=Florida Alignment & Suspension
-BUSINESS_PHONE=(407) 555-0123
-BUSINESS_EMAIL=info@floridaalignment.com
-BUSINESS_ADDRESS=123 Main St, Orlando, FL 32801
-
-# Email (for contact form notifications)
-MAIL_SERVER=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USE_TLS=true
-MAIL_USERNAME=your-email@gmail.com
-MAIL_PASSWORD=your-app-password
-MAIL_DEFAULT_SENDER=your-email@gmail.com
-
-# Optional
-GOOGLE_MAPS_API_KEY=your-api-key
-GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
-CALENDLY_URL=https://calendly.com/your-account
-```
-
-## 📄 Pages
-
-| Route | Description |
-|-------|-------------|
-| `/` | Homepage with services, testimonials, CTA |
-| `/services` | Full service listings |
-| `/about` | About the business |
-| `/contact` | Contact form with FAQ |
-| `/api/contact` | Contact form submission (POST) |
-
-## ✏️ Editing Content
-
-All content is in **`app/data.py`**:
-- `SERVICES` - Service offerings
-- `TESTIMONIALS` - Customer reviews  
-- `FAQS` - Frequently asked questions
-
-Edit and restart the app to see changes.
-
-## 🚀 Production Deployment (Ubuntu)
-
-```bash
-# Install on server
-sudo apt install python3 python3-pip python3-venv nginx
-
-# Set up app
-git clone <repo> /var/www/florida-alignment
-cd /var/www/florida-alignment
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Run with Gunicorn
-gunicorn -w 3 -b 127.0.0.1:8000 app:app
-```
-
-Configure Nginx to proxy to port 8000 and set up SSL with Let's Encrypt.
-
-## 📦 Dependencies
-
-- Flask - Web framework
-- Flask-WTF - Form handling & CSRF protection
-- Flask-Mail - Email notifications
-- Gunicorn - Production WSGI server
-
-## 📜 License
-
-Private - Florida Alignment & Suspension
+Deployment (Cloudflare Pages)
+-----------------------------
+Publish the contents of static_build as the site root. No server is required.
