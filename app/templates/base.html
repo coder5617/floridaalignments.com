@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>{% block title %}Professional Auto Repair Orlando - {{ business_name }}{% endblock %}</title>
+    <title>{% block title %}Professional Auto Repair Tampa - {{ business_name }}{% endblock %}</title>
     
     <!-- Meta Description -->
-    <meta name="description" content="{% block description %}Professional automotive repair in Orlando, FL. Expert brake service, alignments, suspension work, DOT inspections, and general mechanical repairs. Call {{ business_phone }}.{% endblock %}">
+    <meta name="description" content="{% block description %}Professional automotive repair in Tampa, FL. Expert brake service, alignments, suspension work, DOT inspections, and general mechanical repairs. Call {{ business_phone }}.{% endblock %}">
     
     <!-- Keywords -->
-    <meta name="keywords" content="auto repair Orlando, brake service, wheel alignment, suspension repair, DOT inspection, automotive maintenance, car repair Florida">
+    <meta name="keywords" content="auto repair Tampa, brake service, wheel alignment, suspension repair, DOT inspection, automotive maintenance, car repair Florida">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
@@ -62,7 +62,7 @@
         page_title: document.title,
         page_location: window.location.href,
         content_group1: 'Auto Repair',
-        content_group2: 'Orlando FL'
+        content_group2: 'Tampa FL'
       });
     </script>
     {% endif %}
@@ -77,19 +77,6 @@
         "@id": "{{ url_for('main.index', _external=True) }}",
         "url": "{{ url_for('main.index', _external=True) }}",
         "telephone": "{{ business_phone }}",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "{{ business_address.split(',')[0] }}",
-            "addressLocality": "Orlando",
-            "addressRegion": "FL",
-            "postalCode": "32801",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 28.5383,
-            "longitude": -81.3792
-        },
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": [
@@ -221,7 +208,6 @@
                     <h5>Contact Info</h5>
                     <p><i class="fas fa-phone"></i> {{ business_phone }}</p>
                     <p><i class="fas fa-envelope"></i> {{ business_email }}</p>
-                    <p><i class="fas fa-map-marker-alt"></i> {{ business_address }}</p>
                 </div>
                 <div class="col-lg-4">
                     <h5>Services</h5>

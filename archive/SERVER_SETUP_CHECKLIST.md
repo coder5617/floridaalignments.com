@@ -102,7 +102,7 @@ sudo timedatectl set-timezone America/New_York
 - [ ] Update all system packages
 - [ ] Install Python 3.8+ and development tools
 - [ ] Install version control and web tools
-- [ ] Set correct timezone for Orlando, FL
+- [ ] Set correct timezone for Tampa, FL
 - [ ] Reboot if kernel was updated
 
 ---
@@ -418,7 +418,7 @@ DATABASE_URL=postgresql://florida_app:secure_password@localhost/florida_alignmen
 BUSINESS_NAME=Your Actual Business Name
 BUSINESS_PHONE=(407) XXX-XXXX
 BUSINESS_EMAIL=info@yourdomain.com
-BUSINESS_ADDRESS=Your Real Address, Orlando, FL 32XXX
+BUSINESS_ADDRESS=Your Real Address, Tampa, FL 32XXX
 
 # Email Configuration
 MAIL_SERVER=smtp.gmail.com

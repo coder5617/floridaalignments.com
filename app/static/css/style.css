@@ -201,45 +201,16 @@ h1, h2, h3, h4, h5, h6 {
 .hero-image-container {
   position: relative;
   height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.floating-icon {
-  position: absolute;
-  animation: float 6s ease-in-out infinite;
-}
-
-.floating-icon.icon-1 {
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.floating-icon.icon-2 {
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  animation-delay: 1.5s;
-}
-
-.floating-icon.icon-3 {
-  top: 15%;
-  right: 15%;
-  animation-delay: 3s;
-}
-
-.floating-icon.icon-4 {
-  bottom: 20%;
-  left: 20%;
-  animation-delay: 4.5s;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+.hero-logo {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
 }
 
 /* Stats Section */
@@ -555,21 +526,38 @@ footer {
     text-align: center;
   }
   
+  /* Reorder columns on mobile - logo first */
+  .hero-section .row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
   .floating-icon {
     display: none;
   }
   
   .hero-image-container {
-    height: 200px;
+    position: relative;
+    height: auto;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
   }
   
-  .hero-image-container::after {
-    content: '🚗';
-    font-size: 5rem;
-    opacity: 0.3;
+  .hero-logo {
+    opacity: 1;
+    max-width: 85%;
+    width: auto;
+    height: auto;
+    max-height: 300px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+  
+  .hero-section .col-lg-6 {
+    position: relative;
   }
   
   .service-card {

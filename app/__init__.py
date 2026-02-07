@@ -1,10 +1,8 @@
 from flask import Flask, request
 from flask_wtf import CSRFProtect
-from flask_mail import Mail
 from config import config
 
 # Initialize Flask extensions
-mail = Mail()
 csrf = CSRFProtect()
 
 
@@ -15,7 +13,6 @@ def create_app(config_name='default'):
     app.config.from_object(config[config_name])
     
     # Initialize extensions
-    mail.init_app(app)
     csrf.init_app(app)
     
     # Register blueprints
@@ -65,12 +62,12 @@ def create_app(config_name='default'):
             response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
             response.headers['Content-Security-Policy'] = (
                 "default-src 'self'; "
-                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://calendly.com https://www.googletagmanager.com; "
+                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://www.googletagmanager.com; "
                 "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; "
                 "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; "
                 "img-src 'self' data: https: blob:; "
                 "connect-src 'self' https://maps.googleapis.com https://www.google-analytics.com; "
-                "frame-src 'self' https://calendly.com https://maps.google.com; "
+                "frame-src 'self' https://maps.google.com; "
                 "object-src 'none'; "
                 "base-uri 'self'; "
                 "form-action 'self';"
@@ -83,12 +80,11 @@ def create_app(config_name='default'):
     def inject_business_info():
         from datetime import datetime
         return {
-            'business_name': app.config['BUSINESS_NAME'],
-            'business_phone': app.config['BUSINESS_PHONE'],
-            'business_email': app.config['BUSINESS_EMAIL'],
-            'business_address': app.config['BUSINESS_ADDRESS'],
-            'calendly_url': app.config['CALENDLY_URL'],
-            'google_maps_api_key': app.config['GOOGLE_MAPS_API_KEY'],
+            'business_name': 'Florida Alignment & Suspension',
+            'business_phone': '(727) 358-1710',
+            'business_email': 'service@floridaalignments.com',
+            'business_address': '',
+            'google_maps_api_key': app.config.get('GOOGLE_MAPS_API_KEY', ''),
             'current_year': datetime.now().year
         }
     

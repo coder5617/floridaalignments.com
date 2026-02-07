@@ -47,13 +47,13 @@ This checklist covers all the specific items that need to be updated with real b
 - Recommended: business@yourdomain.com or info@yourdomain.com
 
 ### ✅ Physical Address
-**Current**: `123 Main St, Orlando, FL 32801` (sample)
+**Current**: `123 Main St, Tampa, FL 32801` (sample)
 **Update Required**: Replace with actual business address
 
 **Files to Update:**
 1. **`.env`** (Line 8)
    ```bash
-   BUSINESS_ADDRESS=Your Real Street Address, Orlando, FL XXXXX
+   BUSINESS_ADDRESS=Your Real Street Address, Tampa, FL XXXXX
    ```
 
 2. **Google Maps Integration** (Line 392 in contact.html)
@@ -208,7 +208,7 @@ This checklist covers all the specific items that need to be updated with real b
 
 **Lines 11-12**: Update headline
 ```html
-<h1 class="display-3 fw-bold mb-4 text-shadow">Orlando's Trusted Auto Repair Experts</h1>
+<h1 class="display-3 fw-bold mb-4 text-shadow">Tampa's Trusted Auto Repair Experts</h1>
 ```
 
 **Lines 67-90**: Update statistics
@@ -283,7 +283,7 @@ MAIL_PASSWORD=your-gmail-app-password
 
 2. **Base Template**: `/home/yi/FloridaAlignmentSuspension/app/templates/base.html` (Line 11)
    ```html
-   <meta name="description" content="Professional automotive repair in Orlando, FL...">
+   <meta name="description" content="Professional automotive repair in Tampa, FL...">
    ```
    Update with specific business description
 
@@ -293,7 +293,7 @@ MAIL_PASSWORD=your-gmail-app-password
 ### ✅ Keywords and Local SEO
 **File**: `/home/yi/FloridaAlignmentSuspension/app/templates/base.html` (Line 14)
 ```html
-<meta name="keywords" content="auto repair Orlando, brake service, wheel alignment...">
+<meta name="keywords" content="auto repair Tampa, brake service, wheel alignment...">
 ```
 Update with your specific services and location
 

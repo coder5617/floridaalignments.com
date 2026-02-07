@@ -522,13 +522,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Track Calendly clicks
-    document.querySelectorAll('a[href*="calendly"]').forEach(link => {
-        link.addEventListener('click', function() {
-            trackEvent('click', 'lead_generation', 'booking_click', 'calendly');
-        });
-    });
-    
     // Track external link clicks
     document.querySelectorAll('a[href^="http"]').forEach(link => {
         if (!link.href.includes(window.location.hostname)) {

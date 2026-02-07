@@ -46,7 +46,7 @@ SERVICES = [
         'name': 'Minor Engine Repairs',
         'short_description': 'Engine diagnostics, tune-ups, and minor repair services',
         'description': 'Engine diagnostic services, tune-ups, minor engine repairs, and performance optimization to keep your engine running efficiently.',
-        'icon_class': 'fas fa-engine',
+        'icon_class': 'fas fa-oil-can',
         'is_featured': True,
         'display_order': 5
     },
@@ -55,7 +55,7 @@ SERVICES = [
         'name': 'Fleet Maintenance & Tire Repairs',
         'short_description': 'Commercial fleet maintenance and tire repair services',
         'description': 'Comprehensive fleet maintenance services and professional tire repairs for commercial vehicles to minimize downtime and maximize efficiency.',
-        'icon_class': 'fas fa-tire',
+        'icon_class': 'fas fa-tools',
         'is_featured': True,
         'display_order': 6
     }
