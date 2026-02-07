@@ -3,27 +3,13 @@
 .env.local
 .env.production
 
-# Python
+# Python (for local development server)
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
+.venv/
 venv/
 env/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Flask
-instance/
-.webassets-cache
-.pytest_cache/
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
 
 # IDE
 .vscode/
@@ -44,11 +30,10 @@ Thumbs.db
 # Logs
 logs/
 *.log
-npm-debug.log*
 
-# Dependencies
+# Dependencies (if adding build tools later)
 node_modules/
 
-# Production
-/dist/
-/build/
+# Backup files
+*.bak
+*~

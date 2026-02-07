@@ -1,8 +1,8 @@
 window.SITE_CONFIG = {
   businessName: "Florida Alignment & Suspension",
   businessNameShort: "FL Alignment",
-  businessPhoneDisplay: "(555) 123-4567",
-  businessPhoneLink: "5551234567",
+  businessPhoneDisplay: "(727) 358-1710",
+  businessPhoneLink: "7273581710",
   businessEmail: "service@floridaalignments.com",
   businessAddress: "",
   domain: "https://floridaalignment.com",

@@ -1,0 +1,7 @@
+# Handle trailing slashes
+/services  /services/  301
+/about     /about/     301
+/contact   /contact/   301
+
+# Fallback to 404
+/*  /404.html  404
